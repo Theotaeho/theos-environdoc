@@ -1,2 +1,2 @@
 # theos-environdoc
-Personal website
+Personal website (https://theotaeho.github.io/theos-environdoc/)
