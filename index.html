@@ -2,48 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Taeho Kim | Homepage</title>
+  <title>Taeho's Environmental Doc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    /* Reset some basic styles */
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .banner {
-      background-image: url('https://your-image-url.com/banner.jpg'); /* Replace with your image URL */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+
+    /* Top banner styling */
+    .top-banner {
+      background-image: url('banner.jpg'); /* ← Replace with your image */
       background-size: cover;
       background-position: center;
       height: 300px;
-      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      color: white;
+      position: relative;
     }
 
-    .banner h1 {
-      font-size: 3em;
-      background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-      padding: 10px 20px;
-      border-radius: 10px;
+    .top-banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
+      z-index: 1;
     }
 
-    .content {
+    .banner-text {
+      position: relative;
+      z-index: 2;
       padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+    }
+
+    .banner-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .banner-text p {
+      font-size: 1.2rem;
+    }
+
+    /* Content section */
+    .content {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: -50px;
+      border-radius: 8px;
+    }
+
+    .content h2 {
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      color: #777;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="banner">
-    <h1>Taeho Kim</h1>
+  <div class="top-banner">
+    <div class="banner-text">
+      <h1>Taeho's Environmental Doc</h1>
+      <p>AI-based ecohydrology | Land–climate modeling | Earth system science</p>
+    </div>
   </div>
 
   <div class="content">
-    <h2>Welcome!</h2>
-    <p>I am a PhD student at the University of Michigan focusing on AI and ecohydrology.</p>
-    <p>Contact: theokim@umich.edu</p>
+    <h2>Welcome</h2>
+    <p>I’m Taeho Kim, a PhD student at the University of Michigan specializing in ecohydrological modeling and AI-based land surface processes. This site documents my work, datasets, models, and publications related to climate-vegetation interaction, water cycling, and machine learning in Earth system science.</p>
+
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:theokim@umich.edu">theokim@umich.edu</a></p>
+    <p>GitHub: <a href="https://github.com/theotaeho" target="_blank">github.com/theotaeho</a></p>
   </div>
+
+  <footer>
+    &copy; 2025 Taeho Kim
+  </footer>
 
 </body>
 </html>
