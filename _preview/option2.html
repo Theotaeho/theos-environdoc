@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option 2 — Fixed photo + frosted glass</title>
+<style>
+  :root{
+    --ink:#16211a; --accent:#3f8055;
+    --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  /* photo stays put while content scrolls over it */
+  body{font-family:var(--font);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+       background:url('../Figures/Background.jpg') center/cover fixed no-repeat}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(12,26,16,.45),rgba(12,26,16,.25))}
+
+  .nav{position:sticky;top:0;z-index:5;display:flex;gap:2px;padding:12px 28px;
+       background:rgba(18,34,22,.55);backdrop-filter:blur(14px) saturate(1.3);
+       border-bottom:1px solid rgba(255,255,255,.12)}
+  .nav a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.82rem;letter-spacing:.04em;
+         text-transform:uppercase;padding:8px 14px;border-radius:4px;transition:.2s}
+  .nav a:hover{background:rgba(255,255,255,.16)}
+  .nav .brand{margin-right:auto;font-family:var(--font);font-size:1.05rem;text-transform:none;
+              color:#fff;padding-left:0}
+
+  .hero{text-align:center;padding:96px 24px 72px;color:#fff}
+  .hero h1{font-family:var(--font);font-weight:600;font-size:clamp(2.4rem,5.5vw,3.8rem);
+           letter-spacing:-.022em;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+  .hero .tag{margin-top:12px;color:rgba(255,255,255,.88);letter-spacing:.06em;text-transform:uppercase;
+             font-size:.9rem;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+
+  /* frosted cards — the photo shows through, blurred */
+  .card{max-width:800px;margin:0 auto 28px;padding:40px 44px;border-radius:14px;
+        background:rgba(255,255,255,.74);backdrop-filter:blur(18px) saturate(1.2);
+        border:1px solid rgba(255,255,255,.55);box-shadow:0 12px 40px rgba(8,20,12,.28)}
+  .card h2{font-family:var(--font);font-weight:600;font-size:1.6rem;margin-bottom:6px}
+  .card .rule{width:48px;height:2px;background:var(--accent);margin:14px 0 22px}
+  .lead{font-family:var(--font);font-size:1.25rem;line-height:1.55;color:#22312a;margin-bottom:22px}
+  p{color:#3c4b43;margin-bottom:16px}
+  .ph{color:#7a8a80;font-style:italic}
+  .avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;float:right;margin:0 0 18px 26px;
+          border:3px solid rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(10,25,15,.25)}
+  footer{text-align:center;padding:36px 24px 56px;color:rgba(255,255,255,.85);font-size:.85rem;
+         text-shadow:0 1px 8px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="#">Taeho Kim</a>
+    <a href="#">Education</a><a href="#">Publications</a><a href="#">Experience</a><a href="#">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Taeho Kim</h1>
+    <div class="tag">Ecohydrology · Earth System Science</div>
+  </header>
+
+  <main>
+    <section class="card">
+      <img class="avatar" src="../Figures/TaehoKim_home.jpg" alt="">
+      <h2>About</h2><div class="rule"></div>
+      <p class="lead">PhD student at the University of Michigan, working on ecohydrological modeling
+         and AI-based representation of land surface processes.</p>
+      <p class="ph">[소개 문단 자리 — 연구 관심사 2~3문장]</p>
+    </section>
+    <section class="card">
+      <h2>Selected Publications</h2><div class="rule"></div>
+      <p class="ph">[논문 1 자리]</p>
+      <p class="ph">[논문 2 자리]</p>
+    </section>
+  </main>
+  <footer>© 2026 Taeho Kim</footer>
+</body>
+</html>

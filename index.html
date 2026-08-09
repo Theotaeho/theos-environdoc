@@ -1,188 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <title>TaeHo Kim - Environmental Researcher</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      line-height: 1.6;
-    }
-
-
-    /* Background Image */
-    /* body {
-    font-family: Arial, sans-serif;
-    position: relative;
-    background-image: url('Figures/Background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    line-height: 1.6;
-    z-index: 0;
-    } */
-
-    body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(255, 255, 255, 0.6); /* white with 0.6 alpha */
-    z-index: -1;
-    }
-
-    /* Navigation Bar */
-    .navbar {
-      background-color: #333;
-      overflow: hidden;
-      display: flex;
-      justify-content: flex-start; /* Aligns items to the left */
-      padding-left: 20px;          /* Optional: add spacing from the left edge */
-    }
-
-    .navbar a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      text-align: center;
-    }
-
-    .navbar a:hover {
-      background-color: #575757;
-    }
-
-    /* Banner */
-    .banner {
-      background-image: url('Figures/Background.jpg'); /* Replace with your actual image if needed */
-      background-size: cover;
-      background-position: center;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      position: relative;
-      text-align: center;
-    }
-
-    .banner::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .banner-text {
-      position: relative;
-      z-index: 2;
-    }
-
-    .banner-text h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .banner-text p {
-      font-size: 1.2rem;
-    }
-
-    /* Main Content */
-    .content {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .content img {
-      width: 180px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-    }
-
-    .content h2 {
-      margin-bottom: 10px;
-    }
-
-    .content p {
-      margin-bottom: 15px;
-    }
-
-    .pub-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #007acc;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .pub-button:hover {
-      background-color: #005f99;
-    }
-
-    footer {
-      text-align: center;
-      margin: 40px 0;
-      color: #777;
-      font-size: 0.9rem;
-    }
-  </style>
+  <title>Taeho Kim — Ecohydrology</title>
+  <meta name="description" content="Taeho Kim — PhD candidate in Environmental Engineering at the University of Michigan, working on ecohydrology, hydroclimatic extremes and ecosystem resilience.">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="education.html">Education</a>
-    <a href="publications.html">Publications</a>
-    <a href="conferences.html">Conferences</a>
-    <a href="honors.html">Honors & Awards</a>
-    <a href="experience.html">Experience</a>
-    <a href="others.html">Others</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- Top Banner -->
-  <div class="banner">
-    <div class="banner-text">
-      <h1>TaeHo Kim</h1>
-      <p>Environmental Researcher | Ecohydrology | Earth System Science</p>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Taeho Kim</a>
+      <div class="nav-links">
+        <a class="active" href="index.html">Home</a>
+        <a href="vision.html">Vision</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="talks.html">Talks</a>
+        <a href="projects.html">Projects</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="honors.html">Honors &amp; Awards</a>
+        <a href="others.html">Others</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
-  </div>
+  </nav>
 
-  <!-- Main Content -->
-  <div class="content">
-    <!-- Profile Photo -->
-    <img src="Figures/TaehoKim_home.jpg" alt="Taeho Kim">
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <p class="label">University of Michigan</p>
+      <h1>Taeho Kim</h1>
+      <p class="hero-tag">Ecohydrology · Hydroclimatic Extremes · Ecosystem Resilience</p>
+    </div>
+  </header>
 
-    <!-- <h2>Welcome</h2>
-    <p>I’m Taeho Kim, a PhD student at the University of Michigan specializing in ecohydrological modeling and AI-based land surface processes. This site documents my research, datasets, and models related to climate-vegetation interaction, water cycling, and machine learning in Earth system science.</p>
+  <main>
+    <div class="wrap">
 
-    <h3>Contact</h3>
-    <p>Email: <a href="mailto:theokim@umich.edu">theokim@umich.edu</a></p>
-    <p>GitHub: <a href="https://github.com/theotaeho" target="_blank">github.com/theotaeho</a></p> -->
+      <section class="section reveal" id="about">
+        <div class="intro">
+          <div class="intro-side">
+            <img class="intro-photo" src="Figures/TaehoKim_home.jpg" alt="Taeho Kim">
+          <div class="social">
+          <a class="social-icon scholar-icon" href="https://scholar.google.com/citations?user=_zczJPkAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Taeho Kim on Google Scholar" title="Google Scholar">
+              <svg viewBox="0 0 360 385" aria-hidden="true" focusable="false"><g><path fill="currentColor" d="M323.28223 42.66243V15.430205L343.0472 0H129.15709L0 112.2736h85.656075c-.15534 2.12494-.21914 4.04644-.21914 6.22563 0 20.84472 7.2192 38.08662 21.67203 51.86089 14.45284 13.79702 32.25124 20.64784 53.32651 20.64784 4.92319 0 9.75059-.36794 14.43842-1.02419-2.90722 6.50082-4.37457 12.52302-4.37457 18.14228 0 9.87526 4.49924 20.4304 13.46715 31.6418-39.23377 2.6705-68.06112 9.73264-86.43702 21.16322-10.53108 6.49907-19.000207 14.70396-25.390349 24.5311-6.390569 9.89933-9.577754 20.51525-9.577754 31.9616 0 9.64822 2.062375 18.33611 6.21907 26.06233 4.156694 7.7263 9.577757 14.07047 16.312223 18.98408 6.71825 4.96781 14.46899 9.10088 23.219 12.46874 8.73429 3.34378 17.40643 5.71858 26.06106 7.06258 8.62707 1.34222 17.20471 1.9985 25.70579 1.9985 13.46887 0 26.95353-1.73428 40.54711-5.18707 13.56165-3.48461 26.28022-8.64143 38.17105-15.4927 11.85935-6.80488 21.51545-16.0865 28.9219-27.7183 7.39024-11.67998 11.09457-24.80499 11.09457-39.33613 0-11.01584-2.24964-21.03852-6.7502-30.14073-4.46864-9.07202-9.93785-16.54102-16.45271-22.34403-6.5008-5.81263-12.99987-11.15539-19.51512-15.9679-6.50083-4.84488-12.00021-9.75058-16.46884-14.8129-4.4848-5.04657-6.73444-10.05419-6.73444-14.98395 0-4.92145 1.73422-9.67183 5.21588-14.26559 3.45451-4.6095 7.67376-9.04795 12.60967-13.30571 4.93756-4.24944 9.87523-8.96788 14.79665-14.13302 4.92147-5.14719 9.14072-11.82739 12.60971-20.00822 3.48467-8.17907 5.20318-17.44489 5.20318-27.75679 0-13.4527-2.54714-24.46065-7.54735-33.31348-.59369-1.02243-1.21757-1.80338-1.87511-3.02225l56.90745-46.672136v17.118526c-7.39373.92969-6.62422 5.34582-6.62422 10.6352v128.66719c0 5.95832 4.8751 10.83382 10.83386 10.83382h3.98869c5.95835 0 10.83386-4.87506 10.83386-10.83382V53.29282c0-5.27669.77741-9.68801-6.56167-10.63039zM215.9222 265.14114c1.14099.7503 3.7039 2.78075 7.7184 6.03838 4.0495 3.24319 6.797 5.69582 8.26567 7.41432 1.43851 1.66381 3.5792 4.16501 6.37617 7.54734 2.81268 3.3744 4.7184 6.30394 5.71853 8.73425 1.00016 2.4767 2.01603 5.46089 3.04636 8.94556.98567 3.44488 1.48486 6.97595 1.48486 10.56169 0 17.04813-6.56338 29.68007-19.65604 37.85915-13.125 8.18083-28.76651 12.27368-46.93767 12.27368-9.18709 0-18.2031-1.09289-27.06247-3.1951-8.84322-2.11665-17.31192-5.3362-25.39035-9.60185-8.07846-4.25771-14.57754-10.20337-19.50072-17.79659-4.93764-7.64012-7.40645-16.41464-7.40645-26.24962 0-10.32022 2.79692-19.28987 8.42233-26.90588 5.59343-7.62564 12.93774-13.3919 22.03208-17.3154 9.0624-3.94582 18.24946-6.74232 27.56166-8.39827 9.31221-1.7023 18.79679-2.555 28.43842-2.555 4.46862 0 7.93582.25115 10.40465.69607.45456.21918 3.03188 2.07025 7.73456 5.56326 4.70401 3.46237 7.62565 5.59519 8.75047 6.38401zm-3.35823-100.5779c-7.40648 8.85938-17.73454 13.2882-30.95363 13.2882-11.85933 0-22.29766-4.76482-31.26554-14.31195-8.99984-9.52309-15.42235-20.32803-19.34408-32.43061-3.93752-12.10871-5.90585-23.98423-5.90585-35.648 0-13.6942 3.59542-25.35184 10.7809-34.97598 7.18727-9.64952 17.49915-14.48477 30.93786-14.48477 11.87507 0 22.37423 5.03825 31.43704 15.15677 9.09434 10.08482 15.60961 21.41303 19.5169 33.96799 3.92176 12.5392 5.87345 24.52979 5.87345 35.98399 0 13.44658-3.70256 24.60984-11.07663 33.45436z"/></g></svg>
+            </a>
+          <a class="social-icon" href="mailto:theokim@umich.edu" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><text x="12" y="19.4" text-anchor="middle" font-size="22" font-weight="500">@</text></svg></a>
+          <a class="social-icon linkedin-icon" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Taeho Kim on LinkedIn" title="LinkedIn"><svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+          <a class="social-icon github-icon" href="https://github.com/Theotaeho" target="_blank" rel="noopener noreferrer" aria-label="Taeho Kim on GitHub" title="GitHub"><svg viewBox="0 0 496 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.8-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.7 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.4 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/></svg></a>
+          <a class="social-cv" href="assets/CV_Taeho_Kim.pdf" target="_blank" rel="noopener" aria-label="Curriculum Vitae (PDF)" title="Curriculum Vitae (PDF)">CV</a>
+          </div>
+          </div>
+          <div class="intro-text">
+            <p class="lead">I am a PhD candidate in Environmental Engineering at the University of
+              Michigan, advised by Valeriy Ivanov. My work links direct field observation of ecosystem
+              processes to more faithful representations of the Earth system.</p>
+            <p>I work where measurements meet models. In the Arctic forest–tundra ecotone and the
+              Amazon rainforest I operate monitoring systems that record how water and energy move
+              through the subsurface–plant–atmosphere continuum. Those records expose phenomena that
+              models do not yet resolve, and they are the evidence I use to correct, extend and test
+              process-based representations of vegetation and hydrology.</p>
+            <p>My research began with environmental big data and statistical learning. I grew more
+              interested in the mechanisms behind the predictions than in the predictions themselves,
+              which led me to field observation and physics-based modeling — not as replacements for
+              machine learning, but as the complement that makes it explanatory.</p>
+          </div>
+        </div>
+      </section>
 
-  </div>
+      <section class="section reveal">
+        <header class="section-head">
+          <span class="section-num">01</span>
+          <h2>Research Interests</h2>
+        </header>
+        <div class="cards">
+          <div class="card">
+            <h3>Ecohydrology</h3>
+            <p>Water and carbon exchange across the subsurface–plant–atmosphere continuum: plant
+              water-use strategies, water history and residence time, and how both are represented
+              in integrated Earth system models.</p>
+          </div>
+          <div class="card">
+            <h3>Hydroclimatic Extremes</h3>
+            <p>Extreme evapotranspiration as an ecohydrological shock — its frequency, duration,
+              intensity and severity — and the rapid ecosystem water loss and flash drought that
+              can follow it.</p>
+          </div>
+          <div class="card">
+            <h3>Ecosystem Resilience</h3>
+            <p>How stability and recovery vary across vegetation and hydroclimatic gradients, where
+              rising vapor pressure deficit makes ecosystems vulnerable, and how vulnerability
+              hotspots emerge.</p>
+          </div>
+        </div>
+      </section>
 
-  <!-- Footer -->
+      <section class="section reveal">
+        <header class="section-head">
+          <span class="section-num">02</span>
+          <h2>Education</h2>
+        </header>
+        <ol class="timeline">
+          <li>
+            <div class="tl-date">Aug. 2022 – May 2027 (expected)</div>
+            <div class="tl-body">
+              <h3>PhD in Environmental Engineering</h3>
+              <p class="tl-org">University of Michigan–Ann Arbor, MI, United States</p>
+              <p>GPA 4.0 / 4.0. Advisor: Valeriy Ivanov.</p>
+            </div>
+          </li>
+          <li>
+            <div class="tl-date">Mar. 2020 – Aug. 2021</div>
+            <div class="tl-body">
+              <h3>MS in Environmental Engineering</h3>
+              <p class="tl-org">University of Seoul, Seoul, South Korea</p>
+              <p>GPA 4.5 / 4.5 (Top honor). Advisor: YoonKyung Cha.<br>
+                 Thesis: <em>Prediction of fecal pollution characteristics in streams using a
+                 hierarchical Bayesian network.</em></p>
+            </div>
+          </li>
+          <li>
+            <div class="tl-date">Mar. 2014 – Feb. 2020</div>
+            <div class="tl-body">
+              <h3>BS in Environmental Engineering</h3>
+              <p class="tl-org">University of Seoul, Seoul, South Korea</p>
+              <p>GPA 4.27 / 4.5 (Top honor in the College of Urban Science, 1 of 309).<br>
+                 Thesis: <em>Development of the water quality index of urban rivers considering
+                 land use.</em></p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section reveal">
+        <header class="section-head">
+          <span class="section-num">03</span>
+          <h2>News</h2>
+        </header>
+        <ul class="list">
+          <li>
+            <div class="meta">May 2026</div>
+            <div class="body">
+              <span>Awarded the Rackham Predoctoral Fellowship</span>
+              <span>University of Michigan · through May 2027</span>
+            </div>
+          </li>
+          <li>
+            <div class="meta">Jan. 2026</div>
+            <div class="body">
+              <span>Returned to Oak Ridge National Laboratory as a Graduate Research Intern</span>
+              <span>Water Systems Modeling Group · EcoLPT and an AI surrogate for the Amazon</span>
+            </div>
+          </li>
+          <li>
+            <div class="meta">Jan. 2026</div>
+            <div class="body">
+              <span>New DOE project begins: advancing coastal resilience with multi-modal generative AI</span>
+              <span>U.S. Department of Energy · Graduate Researcher</span>
+            </div>
+          </li>
+          <li>
+            <div class="meta">Dec. 2025</div>
+            <div class="body">
+              <span>Presented Amazon sapflow work at AGU 2025</span>
+              <span>Dynamic interpretation of tree-level sapflow response to environmental change</span>
+            </div>
+          </li>
+          <li>
+            <div class="meta">Aug. 2025</div>
+            <div class="body">
+              <span>Field campaign at Santarém, K67, Amazon</span>
+              <span>Soil, tree and atmosphere monitoring</span>
+            </div>
+          </li>
+          <li>
+            <div class="meta">2025</div>
+            <div class="body">
+              <span>Arctic radiative-flux paper published</span>
+              <span><em>Agricultural and Forest Meteorology</em>, 374, 110814</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section reveal">
+        <header class="section-head">
+          <span class="section-num">04</span>
+          <h2>Selected Publications</h2>
+        </header>
+        <ol class="pubs">
+          <li>
+            <div class="pub-year">2026</div>
+            <div>
+              <p class="pub-cite"><strong>Kim, T.</strong>, Le, P., Coon, E., Painter, S., Maxwell, R., Tran, V., Taylor, T., &amp; Ivanov, V. EcoLPT v1.0: Lagrangian Particle Tracking tool for Ecohydrology. <em>Geoscientific Model Development</em>.</p>
+              <p class="pub-links">In preparation</p>
+            </div>
+          </li>
+          <li>
+            <div class="pub-year">2026</div>
+            <div>
+              <p class="pub-cite">Ivanov, V.<sup>1</sup>, <strong>Kim, T.</strong><sup>1</sup>, Taylor, T., Agee, E., Albert, L. P., <em>et al.</em> Identification of Tree Water Uptake Strategies in the Amazon Rainforest as Sapflow Functional Types. <em>New Phytologist</em>.</p>
+              <p class="pub-links">In review · <sup>1</sup>Equal contribution</p>
+            </div>
+          </li>
+          <li>
+            <div class="pub-year">2025</div>
+            <div>
+              <p class="pub-cite"><strong>Kim, T.</strong>, Zhou, W., Tran, V., Wang, F., Zhu, M., Sheshukov, A., Zhang, T., Liu, D., Mazepa, V., Sokolov, A., Valdayskikh, V., &amp; Ivanov, V. Biases in radiative flux observations due to precipitation across the Arctic forest–tundra ecotone. <em>Agricultural and Forest Meteorology</em>, 374, 110814.</p>
+            </div>
+          </li>
+          <li>
+            <div class="pub-year">2025</div>
+            <div>
+              <p class="pub-cite">Tran, V., <strong>Kim, T.</strong>, Xu, D., Tran, H., Le, M., Policelli, F., Tran, T., Kim, J., Wright, D., Restrepo, P., &amp; Ivanov, V. AI improves the accuracy, reliability, and economic value of continental-scale flood predictions. <em>AGU Advances</em>, e2025AV001678.</p>
+            </div>
+          </li>
+        </ol>
+        <p style="margin-top:40px"><a class="btn" href="publications.html">All publications</a></p>
+      </section>
+
+    </div>
+  </main>
+
   <footer>
-    &copy; 2025 TaeHo Kim
+    <div class="footer-links">
+      <a href="mailto:theokim@umich.edu">theokim@umich.edu</a>
+      <a href="https://scholar.google.com/citations?user=_zczJPkAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://orcid.org/0000-0003-2714-5165" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://github.com/Theotaeho" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    &copy; 2026 Taeho Kim
   </footer>
 
+  <script src="assets/site.js"></script>
 </body>
 </html>

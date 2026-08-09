@@ -1,0 +1,423 @@
+/* ==========================================================================
+   Taeho Kim — personal site
+
+   Design brief: quiet and expensive. Restraint over decoration.
+     · dark throughout — a deep neutral green-grey, never black
+     · one photograph, used once, on the home hero, dissolving into the page
+     · everything else is ground, hairlines and type
+     · no cards, no shadows, no fills — separation comes from space
+     · colour is nearly neutral; the green is desaturated and rationed
+     · motion is opacity only, slow, and never moves the layout
+
+   Contents
+     1. Tokens
+     2. Base
+     3. Navigation
+     4. Home hero
+     5. Inner-page header
+     6. Layout & sections
+     7. Components
+     8. Footer
+     9. Motion & accessibility
+   ========================================================================== */
+
+/* ------------------------------------------------------------- 1. tokens */
+
+:root{
+  --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+  /* colour — dark throughout. Not black: a deep neutral with a green
+     undertone, so the forest photograph sits in the same family as the page.
+     Text is never pure white; pure white on dark glares and reads cheap. */
+  --paper:#121614;         /* rgb(18,22,20) — see the hero gradient */
+  --ink:#eef0ec;
+  --body:#a2aca5;
+  --muted:#6f7a72;
+  --line:#2a332d;          /* hairline */
+  --line-faint:#1e2521;
+  --deep:#0e120f;          /* hero base, behind the photograph */
+  --accent:#8fae9c;        /* links only — desaturated sage */
+  --brand:#4ea87c;         /* the one saturated note: the profile link row */
+  --brand-hi:#63bd90;
+
+  /* type scale */
+  --t-display:clamp(2.9rem,6.8vw,5rem);
+  --t-h1:clamp(2rem,4.2vw,2.75rem);
+  --t-h2:1.375rem;
+  --t-h3:1rem;
+  --t-lead:1.25rem;
+  --t-body:1rem;
+  --t-small:.9375rem;
+  --t-label:.6875rem;
+
+  /* spacing — 8px grid, generous at the top end */
+  --s1:8px;  --s2:16px; --s3:24px; --s4:40px;
+  --s5:64px; --s6:96px; --s7:128px;
+
+  --maxw:820px;
+  --maxw-wide:1360px;
+  --measure:68ch;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* --------------------------------------------------------------- 2. base */
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* tells the browser to render scrollbars and form controls dark too */
+html{color-scheme:dark;-webkit-text-size-adjust:100%}
+
+body{
+  font-family:var(--font);
+  font-size:var(--t-body);
+  line-height:1.8;
+  background:var(--paper);
+  color:var(--body);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;flex-direction:column;min-height:100vh;
+}
+
+/* Display sizes carry themselves; weight is where loudness creeps in. */
+h1,h2,h3{color:var(--ink);line-height:1.16;text-wrap:balance}
+h1{font-weight:500;letter-spacing:-.042em}
+h2{font-size:var(--t-h2);font-weight:500;letter-spacing:-.02em}
+h3{font-size:var(--t-h3);font-weight:600;letter-spacing:-.008em}
+
+p{text-wrap:pretty}
+p + p{margin-top:var(--s2)}
+
+/* the one recurring small-caps label */
+.label{
+  font-size:var(--t-label);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+a{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb,var(--accent) 28%,transparent);
+  transition:border-color .35s var(--ease),color .35s var(--ease);
+}
+a:hover{border-bottom-color:var(--accent)}
+
+::selection{background:color-mix(in srgb,var(--accent) 30%,transparent);color:var(--ink)}
+
+:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+
+/* --------------------------------------------------------- 3. navigation */
+/* Paper masthead, not a coloured bar. It sits above the photograph on the
+   home page the way a magazine nameplate sits above a cover image. */
+
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw-wide);margin:0 auto;
+  display:flex;align-items:center;padding:0 var(--s4);
+}
+
+.brand{
+  margin-right:auto;padding:var(--s3) var(--s4) var(--s3) 0;
+  color:var(--ink);font-size:.9375rem;font-weight:600;
+  letter-spacing:.01em;white-space:nowrap;
+  border-bottom:none;
+}
+.brand:hover{color:var(--ink)}
+
+.nav-links{display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.nav-links::-webkit-scrollbar{display:none}
+
+.nav-links a{
+  position:relative;
+  padding:var(--s3) 10px;
+  color:var(--muted);
+  font-size:var(--t-label);letter-spacing:.14em;text-transform:uppercase;
+  white-space:nowrap;
+  border-bottom:none;
+  transition:color .3s var(--ease);
+}
+.nav-links a::after{
+  content:"";position:absolute;left:10px;right:10px;bottom:20px;height:1px;
+  background:currentColor;opacity:0;
+  transition:opacity .3s var(--ease);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{opacity:.35}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{opacity:1}
+
+/* below this width the links no longer sit beside the wordmark — split rows */
+@media(max-width:1100px){
+  .nav-inner{flex-direction:column;align-items:stretch;padding:0 var(--s3)}
+  .brand{margin-right:0;padding:18px 2px 2px}
+  .nav-links a{padding:10px 10px 16px}
+  .nav-links a::after{left:10px;right:10px;bottom:10px}
+  .nav-links a:first-child{padding-left:2px}
+  .nav-links a:first-child::after{left:2px}
+}
+
+/* ---------------------------------------------------------- 4. home hero */
+
+.hero{
+  position:relative;
+  height:min(86vh,760px);
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+  background:var(--deep);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('../Figures/Background.jpg') center 42%/cover no-repeat;
+}
+/* One gradient doing two jobs: it beds the type, and it lands on the exact
+   page colour so the photograph dissolves into the page with no seam.
+   The stops are rgb(18,22,20) — keep them in step with --paper. */
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(18,22,20,.24) 0%,
+    rgba(18,22,20,0)   28%,
+    rgba(18,22,20,.55) 60%,
+    rgba(18,22,20,.94) 88%,
+    rgb(18,22,20)      100%);
+}
+.hero-inner{
+  position:relative;z-index:2;width:100%;
+  max-width:var(--maxw-wide);margin:0 auto;
+  padding:0 var(--s4) var(--s5);
+}
+.hero .label{color:rgba(255,255,255,.78);margin-bottom:var(--s3)}
+.hero h1{
+  color:#fff;
+  font-size:var(--t-display);
+  line-height:.98;
+  letter-spacing:-.05em;
+}
+.hero-tag{
+  margin-top:var(--s3);
+  color:rgba(255,255,255,.84);
+  font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;
+  max-width:52ch;line-height:1.9;
+}
+
+@media(max-width:1100px){.hero-inner{padding-left:var(--s3);padding-right:var(--s3)}}
+@media(max-width:600px){.hero{height:min(78vh,560px)}}
+
+/* -------------------------------------------------- 5. inner-page header */
+/* Typographic only. The photograph is spent on the home page. */
+
+.pagehead{border-bottom:1px solid var(--line)}
+.pagehead-inner{
+  max-width:var(--maxw);margin:0 auto;
+  padding:var(--s7) var(--s3) var(--s5);
+}
+.pagehead .label{display:block;margin-bottom:var(--s3)}
+.pagehead h1{font-size:var(--t-h1)}
+
+@media(max-width:600px){.pagehead-inner{padding-top:var(--s5);padding-bottom:var(--s4)}}
+
+/* ------------------------------------------------- 6. layout & sections */
+
+main{flex:1}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:var(--s6) var(--s3) var(--s5)}
+
+.section{margin-bottom:var(--s6)}
+.section:last-child{margin-bottom:0}
+.section > p{max-width:var(--measure)}
+
+/* heading sits on a hairline, the number set quietly beside it */
+.section-head{
+  display:flex;align-items:baseline;gap:var(--s3);
+  padding-bottom:var(--s2);margin-bottom:var(--s4);
+  border-bottom:1px solid var(--line);
+}
+.section-num{
+  font-size:var(--t-label);letter-spacing:.18em;color:var(--muted);
+  font-variant-numeric:tabular-nums;font-weight:400;
+}
+
+.lead{
+  font-size:var(--t-lead);line-height:1.62;color:var(--ink);
+  font-weight:400;letter-spacing:-.014em;
+  max-width:var(--measure);
+}
+
+/* secondary copy: status lines, captions, anything that should recede */
+.muted{color:var(--muted)}
+
+.note{
+  padding-left:var(--s3);
+  border-left:1px solid var(--line);
+  color:var(--muted);font-size:var(--t-small);line-height:1.75;
+  max-width:var(--measure);
+}
+
+/* ------------------------------------------------------- 7. components */
+
+/* — intro: portrait with its link row directly beneath — */
+.intro{display:flex;gap:var(--s5);align-items:flex-start}
+.intro-side{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.intro-photo{
+  width:186px;height:186px;border-radius:50%;object-fit:cover;display:block;
+  filter:saturate(.9) brightness(.96);   /* keep it from glaring on dark */
+}
+.intro-text{min-width:0}
+
+@media(max-width:700px){
+  .intro{flex-direction:column;gap:var(--s4)}
+  .intro-side{align-items:flex-start}
+  .intro-photo{width:148px;height:148px}
+}
+
+/* — profile links: solid brand glyphs, plus a CV pill — */
+.social{display:flex;align-items:center;gap:18px;margin-top:var(--s3)}
+.social a{border-bottom:none}
+
+.social-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:29px;height:29px;
+  color:var(--brand);
+  transition:color .3s var(--ease),transform .3s var(--ease);
+}
+.social-icon:hover{color:var(--brand-hi);transform:translateY(-2px)}
+/* overflow:visible so letterform descenders are never clipped by the viewBox */
+.social-icon svg{width:100%;height:100%;fill:currentColor;display:block;overflow:visible}
+.social-icon svg text{font-family:var(--font);fill:currentColor}
+.social-icon svg .knock{fill:var(--paper)}   /* knocked out of the LinkedIn tile */
+
+.social-cv{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:34px;padding:0 21px;border-radius:999px;
+  background:var(--brand);color:var(--paper);
+  font-size:.9375rem;font-weight:700;letter-spacing:.02em;
+  transition:background-color .3s var(--ease),transform .3s var(--ease);
+}
+.social-cv:hover{background:var(--brand-hi);color:var(--paper);transform:translateY(-2px)}
+
+/* — columns (was cards): a hairline above, then type. no box. — */
+.cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:var(--s4) var(--s4);
+}
+.card{border-top:1px solid var(--line);padding-top:var(--s2)}
+.card h3{margin-bottom:var(--s1);color:var(--ink)}
+.card p{font-size:var(--t-small);line-height:1.7;margin:0}
+
+/* — timeline: two columns, hairline rows, no dots or rails — */
+.timeline{list-style:none}
+.timeline li{
+  display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
+  padding:var(--s3) 0;
+  border-top:1px solid var(--line-faint);
+}
+.timeline li:first-child{border-top:1px solid var(--line)}
+.timeline li:last-child{border-bottom:1px solid var(--line-faint)}
+.tl-date{
+  color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;padding-top:6px;
+}
+.tl-body h3{margin-bottom:2px}
+.tl-org{color:var(--body);font-size:var(--t-small);margin-bottom:var(--s1)}
+.tl-body p{font-size:var(--t-small);line-height:1.72;max-width:var(--measure)}
+
+@media(max-width:620px){
+  .timeline li{grid-template-columns:1fr;gap:var(--s1)}
+  .tl-date{padding-top:0}
+}
+
+/* — publications — */
+.pubs{list-style:none}
+.pubs li{
+  display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
+  padding:var(--s3) 0;
+  border-top:1px solid var(--line-faint);
+}
+.pubs li:first-child{border-top:1px solid var(--line)}
+.pubs li:last-child{border-bottom:1px solid var(--line-faint)}
+.pub-year{
+  color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;
+  font-variant-numeric:tabular-nums;padding-top:6px;
+}
+.pub-cite{
+  color:var(--ink);font-size:var(--t-small);line-height:1.72;
+  margin-bottom:var(--s1);max-width:var(--measure);
+}
+.pub-cite em{font-style:italic;color:var(--body)}
+.pub-cite strong{font-weight:600}
+.pub-links{font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+
+@media(max-width:620px){.pubs li{grid-template-columns:1fr;gap:var(--s1)}}
+
+/* — two-column list — */
+.list{list-style:none}
+.list li{
+  display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
+  padding:var(--s3) 0;
+  border-top:1px solid var(--line-faint);
+}
+.list li:first-child{border-top:1px solid var(--line)}
+.list li:last-child{border-bottom:1px solid var(--line-faint)}
+.list .meta{
+  color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;padding-top:6px;
+}
+.list .body{font-size:var(--t-small);line-height:1.72;max-width:var(--measure)}
+.list .body span{display:block;color:var(--muted)}
+.list .body span:first-child{color:var(--ink)}
+
+@media(max-width:620px){.list li{grid-template-columns:1fr;gap:2px}}
+
+/* — contact — */
+.contact-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:var(--s4);
+}
+.contact-item{border-top:1px solid var(--line);padding-top:var(--s2)}
+.contact-item .label{display:block;margin-bottom:var(--s1)}
+.contact-item .value{color:var(--ink);font-size:var(--t-small);line-height:1.7;word-break:break-word}
+
+/* — the only "button": a text link with a rule under it — */
+.btn{
+  display:inline-block;
+  color:var(--ink);font-size:var(--t-label);letter-spacing:.16em;text-transform:uppercase;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--line);
+  transition:border-color .35s var(--ease);
+}
+.btn:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.btn.ghost{background:none}
+
+/* ------------------------------------------------------------- 8. footer */
+
+footer{
+  border-top:1px solid var(--line);
+  margin-top:var(--s7);
+  padding:var(--s4) var(--s3) var(--s5);
+  color:var(--muted);
+  font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
+  text-align:center;
+}
+.footer-links{
+  margin-bottom:var(--s2);
+  display:flex;justify-content:center;gap:var(--s4);flex-wrap:wrap;
+}
+footer a{color:var(--muted);border-bottom-color:transparent}
+footer a:hover{color:var(--ink);border-bottom-color:var(--line)}
+
+/* --------------------------------------------- 9. motion & accessibility */
+
+/* Opacity only. Nothing slides; nothing draws attention to itself. */
+.reveal{opacity:0;transition:opacity 1.1s var(--ease)}
+.reveal.is-in{opacity:1}
+.no-js .reveal{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1}
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>배경 · 배너 디자인 비교</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:#11161a;color:#e8ecea;line-height:1.6;padding:32px 24px 80px}
+  header{max-width:1200px;margin:0 auto 36px}
+  h1{font-size:1.5rem;font-weight:600;letter-spacing:-.01em}
+  header p{color:#8a9b93;margin-top:8px;font-size:.92rem}
+  .opt{max-width:1200px;margin:0 auto 44px}
+  .bar{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;flex-wrap:wrap}
+  .num{background:#2c6b47;color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.06em;
+       padding:4px 10px;border-radius:20px}
+  .name{font-size:1.05rem;font-weight:600}
+  .desc{color:#8a9b93;font-size:.88rem;flex:1 1 340px}
+  .open{color:#7fc79a;text-decoration:none;font-size:.85rem;white-space:nowrap}
+  .open:hover{text-decoration:underline}
+  .frame{border:1px solid #263038;border-radius:10px;overflow:hidden;background:#fff;
+         box-shadow:0 10px 34px rgba(0,0,0,.4)}
+  iframe{width:100%;height:600px;border:0;display:block}
+</style>
+</head>
+<body>
+<header>
+  <h1>배경 · 배너 디자인 5가지</h1>
+  <p>각 프레임은 실제 페이지입니다 — 안에서 스크롤해서 배경이 어떻게 동작하는지 확인해 보세요.
+     마음에 드는 번호를 알려주시면 그걸 기준으로 전체 사이트를 만들겠습니다.</p>
+</header>
+
+<section class="opt">
+  <div class="bar"><span class="num">01</span><span class="name">Full-bleed hero</span>
+    <span class="desc">사진을 화면 상단 78%까지 크게 깔고 그라디언트로 어둡게 덮은 뒤 이름을 올림. 아래는 깨끗한 흰 배경. 학술 사이트에서 가장 흔하면서 사진이 제일 잘 사는 방식.</span>
+    <a class="open" href="option1.html" target="_blank">단독으로 열기 ↗</a></div>
+  <div class="frame"><iframe src="option1.html"></iframe></div>
+</section>
+
+<section class="opt">
+  <div class="bar"><span class="num">02</span><span class="name">Fixed photo + 프로스티드 글래스</span>
+    <span class="desc">사진이 페이지 전체에 고정되고, 내용은 반투명 블러 카드로 그 위를 스크롤. 화려하지만 글 읽기는 01보다 불리함.</span>
+    <a class="open" href="option2.html" target="_blank">단독으로 열기 ↗</a></div>
+  <div class="frame"><iframe src="option2.html"></iframe></div>
+</section>
+
+<section class="opt">
+  <div class="bar"><span class="num">03</span><span class="name">Quiet wash</span>
+    <span class="desc">사진을 강하게 블러·탈색해 은은한 배경 톤으로만 쓰고, 대신 선명한 사진 카드를 따로 배치. 글이 주인공인 차분한 스타일.</span>
+    <a class="open" href="option3.html" target="_blank">단독으로 열기 ↗</a></div>
+  <div class="frame"><iframe src="option3.html"></iframe></div>
+</section>
+
+<section class="opt">
+  <div class="bar"><span class="num">04</span><span class="name">Split hero</span>
+    <span class="desc">왼쪽은 딥그린 단색에 이름·소개, 오른쪽은 사진. 글자가 사진을 가리지 않아 가독성이 가장 좋음. 모바일에서는 위아래로 쌓임.</span>
+    <a class="open" href="option4.html" target="_blank">단독으로 열기 ↗</a></div>
+  <div class="frame"><iframe src="option4.html"></iframe></div>
+</section>
+
+<section class="opt">
+  <div class="bar"><span class="num">05</span><span class="name">Duotone band</span>
+    <span class="desc">사진에 브랜드 그린을 입혀(luminosity 블렌드) 330px 배너로. 사진이라기보다 브랜드 그래픽처럼 보이고, 모든 페이지에 반복해도 안 질림.</span>
+    <a class="open" href="option5.html" target="_blank">단독으로 열기 ↗</a></div>
+  <div class="frame"><iframe src="option5.html"></iframe></div>
+</section>
+</body>
+</html>

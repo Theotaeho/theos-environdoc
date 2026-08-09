@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option 3 — Quiet wash</title>
+<style>
+  :root{
+    --ink:#1a2620; --muted:#6b7a70; --line:#e6e4db;
+    --forest:#1f4d34; --accent:#3f8055; --paper:#fbfaf7;
+    --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.7;
+       -webkit-font-smoothing:antialiased}
+
+  /* photo is present but pushed far back: blurred, desaturated, fading out */
+  .wash{position:fixed;inset:0 0 auto 0;height:70vh;z-index:0;overflow:hidden;pointer-events:none}
+  .wash::before{content:"";position:absolute;inset:-40px;
+    background:url('../Figures/Background.jpg') center 35%/cover no-repeat;
+    filter:blur(28px) saturate(.45) brightness(1.12);opacity:.5;transform:scale(1.1)}
+  .wash::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(251,250,247,.35) 0%,rgba(251,250,247,.85) 55%,var(--paper) 100%)}
+  .page{position:relative;z-index:1}
+
+  .nav{display:flex;gap:2px;padding:20px 32px;max-width:1000px;margin:0 auto}
+  .nav a{color:#33443a;text-decoration:none;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;
+         padding:8px 13px;border-radius:4px;transition:.2s}
+  .nav a:hover{background:rgba(31,77,52,.09);color:var(--forest)}
+  .nav .brand{margin-right:auto;font-family:var(--font);font-size:1.05rem;text-transform:none;
+              color:var(--forest);padding-left:0}
+
+  .hero{max-width:1000px;margin:0 auto;padding:64px 32px 48px;display:flex;gap:44px;align-items:center}
+  .hero-text{flex:1}
+  .hero h1{font-family:var(--font);font-weight:600;font-size:clamp(2.4rem,5vw,3.6rem);
+           letter-spacing:-.022em;line-height:1.08}
+  .hero .tag{margin-top:14px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-size:.85rem}
+  .hero .rule{width:52px;height:2px;background:var(--accent);margin-top:22px}
+
+  /* one crisp photo card, so the image still gets to be seen properly */
+  .shot{width:340px;flex-shrink:0;border-radius:10px;overflow:hidden;
+        box-shadow:0 18px 44px rgba(24,48,32,.22)}
+  .shot img{width:100%;height:230px;object-fit:cover;display:block}
+  .shot figcaption{background:#fff;padding:10px 14px;font-size:.75rem;color:var(--muted);
+                   border-top:1px solid var(--line)}
+
+  .wrap{max-width:720px;margin:0 auto;padding:16px 32px 40px}
+  .lead{font-family:var(--font);font-size:1.3rem;line-height:1.6;color:#26362d;margin-bottom:24px}
+  p{color:#455449;margin-bottom:18px}
+  .ph{color:#8b9a90;font-style:italic}
+  footer{border-top:1px solid var(--line);margin:40px auto 0;max-width:720px;padding:26px 32px 48px;
+         text-align:center;color:#93a298;font-size:.85rem}
+</style>
+</head>
+<body>
+  <div class="wash"></div>
+  <div class="page">
+    <nav class="nav">
+      <a class="brand" href="#">Taeho Kim</a>
+      <a href="#">Education</a><a href="#">Publications</a><a href="#">Experience</a><a href="#">Contact</a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-text">
+        <h1>Taeho Kim</h1>
+        <div class="tag">Ecohydrology · Earth System Science</div>
+        <div class="rule"></div>
+      </div>
+      <figure class="shot">
+        <img src="../Figures/Background.jpg" alt="Field campaign in tropical forest">
+        <figcaption>[사진 캡션 자리 — 조사 지역·연도]</figcaption>
+      </figure>
+    </header>
+
+    <main class="wrap">
+      <p class="lead">PhD student at the University of Michigan, working on ecohydrological modeling
+         and AI-based representation of land surface processes.</p>
+      <p class="ph">[소개 문단 자리 — 연구 관심사 2~3문장]</p>
+      <p class="ph">[두 번째 문단 자리 — 현재 진행 중인 프로젝트]</p>
+    </main>
+    <footer>© 2026 Taeho Kim</footer>
+  </div>
+</body>
+</html>

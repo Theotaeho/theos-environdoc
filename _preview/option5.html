@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option 5 — Duotone band</title>
+<style>
+  :root{
+    --ink:#16211a; --muted:#6b7a70; --line:#e6e4db;
+    --forest:#123425; --accent:#7fc79a; --paper:#fbfaf7;
+    --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.7;
+       -webkit-font-smoothing:antialiased}
+
+  .nav{display:flex;gap:2px;padding:14px 30px;background:var(--forest)}
+  .nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.8rem;letter-spacing:.05em;
+         text-transform:uppercase;padding:8px 13px;border-radius:4px;transition:.2s}
+  .nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+  .nav .brand{margin-right:auto;font-family:var(--font);font-size:1.05rem;text-transform:none;
+              color:#fff;padding-left:0}
+
+  /* photo tinted to the brand green — reads as graphic identity, not a snapshot */
+  .band{position:relative;height:330px;display:flex;align-items:center;justify-content:center;
+        text-align:center;overflow:hidden;background:var(--forest)}
+  .band::before{content:"";position:absolute;inset:0;
+    background:url('../Figures/Background.jpg') center 42%/cover no-repeat;
+    filter:grayscale(1) contrast(1.15);mix-blend-mode:luminosity;opacity:.55}
+  .band::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(18,52,37,.25),rgba(18,52,37,.7))}
+  .band-inner{position:relative;z-index:2;color:#fff;padding:0 24px}
+  .band h1{font-family:var(--font);font-weight:600;font-size:clamp(2.4rem,5.5vw,3.8rem);
+           letter-spacing:-.022em;line-height:1.06}
+  .band .tag{margin-top:14px;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;
+             font-size:.82rem}
+  .band .rule{width:52px;height:2px;background:var(--accent);margin:20px auto 0}
+
+  .wrap{max-width:760px;margin:0 auto;padding:60px 32px 40px}
+  .lead{font-family:var(--font);font-size:1.3rem;line-height:1.6;color:#26362d;margin-bottom:24px}
+  p{color:#455449;margin-bottom:18px}
+  .ph{color:#8b9a90;font-style:italic}
+  .avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;float:right;margin:0 0 18px 26px;
+          border:3px solid #fff;box-shadow:0 6px 20px rgba(20,40,25,.18)}
+  footer{border-top:1px solid var(--line);margin:40px auto 0;max-width:760px;padding:26px 32px 48px;
+         text-align:center;color:#93a298;font-size:.85rem}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="#">Taeho Kim</a>
+    <a href="#">Education</a><a href="#">Publications</a><a href="#">Experience</a><a href="#">Contact</a>
+  </nav>
+
+  <header class="band">
+    <div class="band-inner">
+      <h1>Taeho Kim</h1>
+      <div class="tag">Ecohydrology · Earth System Science</div>
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <img class="avatar" src="../Figures/TaehoKim_home.jpg" alt="">
+    <p class="lead">PhD student at the University of Michigan, working on ecohydrological modeling
+       and AI-based representation of land surface processes.</p>
+    <p class="ph">[소개 문단 자리 — 연구 관심사 2~3문장]</p>
+    <p class="ph">[두 번째 문단 자리 — 현재 진행 중인 프로젝트]</p>
+  </main>
+  <footer>© 2026 Taeho Kim</footer>
+</body>
+</html>

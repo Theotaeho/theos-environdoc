@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option 4 — Split hero</title>
+<style>
+  :root{
+    --ink:#16211a; --muted:#6b7a70; --line:#e6e4db;
+    --forest:#173d28; --accent:#6fbf8d; --paper:#fbfaf7;
+    --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.7;
+       -webkit-font-smoothing:antialiased}
+
+  .nav{display:flex;gap:2px;padding:14px 30px;background:var(--forest)}
+  .nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.8rem;letter-spacing:.05em;
+         text-transform:uppercase;padding:8px 13px;border-radius:4px;transition:.2s}
+  .nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+  .nav .brand{margin-right:auto;font-family:var(--font);font-size:1.05rem;text-transform:none;
+              color:#fff;padding-left:0}
+
+  /* left: solid brand colour + type. right: the photo, uncropped by text. */
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:460px}
+  .hero-left{background:var(--forest);color:#fff;padding:64px 56px;display:flex;flex-direction:column;
+             justify-content:center;position:relative;overflow:hidden}
+  .hero-left::after{content:"";position:absolute;right:-90px;bottom:-90px;width:260px;height:260px;
+    border-radius:50%;background:rgba(111,191,141,.13)}
+  .hero-left h1{font-family:var(--font);font-weight:600;font-size:clamp(2.2rem,4vw,3.3rem);
+                line-height:1.08;letter-spacing:-.022em;position:relative}
+  .hero-left .tag{margin-top:14px;color:rgba(255,255,255,.72);letter-spacing:.06em;
+                  text-transform:uppercase;font-size:.82rem;position:relative}
+  .hero-left .rule{width:52px;height:2px;background:var(--accent);margin:24px 0 22px;position:relative}
+  .hero-left p{color:rgba(255,255,255,.86);max-width:38ch;position:relative}
+  .hero-right{background:url('../Figures/Background.jpg') center 45%/cover no-repeat}
+
+  @media(max-width:780px){
+    .hero{grid-template-columns:1fr}
+    .hero-right{height:240px;order:-1}
+    .hero-left{padding:44px 30px}
+  }
+
+  .wrap{max-width:760px;margin:0 auto;padding:64px 32px 40px}
+  .wrap h2{font-family:var(--font);font-weight:600;font-size:1.7rem;margin-bottom:6px}
+  .wrap .rule{width:48px;height:2px;background:var(--accent);margin:12px 0 24px}
+  .lead{font-family:var(--font);font-size:1.28rem;line-height:1.6;color:#26362d;margin-bottom:22px}
+  p{color:#455449;margin-bottom:18px}
+  .ph{color:#8b9a90;font-style:italic}
+  .avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;float:right;margin:0 0 18px 26px;
+          border:3px solid #fff;box-shadow:0 6px 20px rgba(20,40,25,.18)}
+  footer{border-top:1px solid var(--line);margin:40px auto 0;max-width:760px;padding:26px 32px 48px;
+         text-align:center;color:#93a298;font-size:.85rem}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="#">Taeho Kim</a>
+    <a href="#">Education</a><a href="#">Publications</a><a href="#">Experience</a><a href="#">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-left">
+      <h1>Taeho Kim</h1>
+      <div class="tag">Ecohydrology · Earth System Science</div>
+      <div class="rule"></div>
+      <p>PhD student at the University of Michigan, working on ecohydrological modeling and
+         AI-based representation of land surface processes.</p>
+    </div>
+    <div class="hero-right"></div>
+  </header>
+
+  <main class="wrap">
+    <img class="avatar" src="../Figures/TaehoKim_home.jpg" alt="">
+    <h2>Research</h2><div class="rule"></div>
+    <p class="ph">[소개 문단 자리 — 연구 관심사 2~3문장]</p>
+    <p class="ph">[두 번째 문단 자리 — 현재 진행 중인 프로젝트]</p>
+  </main>
+  <footer>© 2026 Taeho Kim</footer>
+</body>
+</html>
