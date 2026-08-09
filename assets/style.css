@@ -335,20 +335,6 @@ main{flex:1}
 .card h3{margin-bottom:var(--s1);color:var(--ink)}
 .card p{font-size:var(--t-small);line-height:1.7;margin:0}
 
-/* — topics: hairline-separated themes. No per-item number: the section
-   already carries one, and a second numeral in the same gutter reads as a
-   duplicate. — */
-.topics{list-style:none}
-.topics li{
-  display:block;
-  padding:var(--s3) 0;
-  border-top:1px solid var(--line-faint);
-}
-.topics li:first-child{border-top:1px solid var(--line)}
-.topics li:last-child{border-bottom:1px solid var(--line-faint)}
-.topics h3{margin-bottom:var(--s1)}
-.topics p{font-size:var(--t-small);line-height:1.72;max-width:var(--measure)}
-
 /* — timeline: two columns, hairline rows, no dots or rails — */
 .timeline{list-style:none}
 .timeline li{
