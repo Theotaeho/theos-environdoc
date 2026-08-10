@@ -2,9 +2,10 @@
    Taeho Kim — personal site
 
    Design brief: quiet and expensive. Restraint over decoration.
-     · dark throughout — a deep neutral green-grey, never black
-     · one photograph, used once, on the home hero, dissolving into the page
-     · everything else is ground, hairlines and type
+     · light throughout — warm paper, never pure white
+     · one deep-green accent, rationed: links, the profile row, the CV pill
+     · one photograph, used once, on the home hero
+     · everything else is paper, hairlines and type
      · no cards, no shadows, no fills — separation comes from space
      · colour is nearly neutral; the green is desaturated and rationed
      · motion is opacity only, slow, and never moves the layout
@@ -26,20 +27,20 @@
 :root{
   --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
 
-  /* colour — dark throughout. Not black: a deep neutral with a green
-     undertone, so the forest photograph sits in the same family as the page.
-     Text is never pure white; pure white on dark glares and reads cheap. */
-  --paper:#121614;         /* rgb(18,22,20) — see the hero gradient */
-  --ink:#eef0ec;
-  --body:#a2aca5;
-  --body-strong:#cbd4cd;   /* body copy that needs more presence */
-  --muted:#6f7a72;
-  --line:#2a332d;          /* hairline */
-  --line-faint:#1e2521;
-  --deep:#0e120f;          /* hero base, behind the photograph */
-  --accent:#8fae9c;        /* links only — desaturated sage */
-  --brand:#4ea87c;         /* the one saturated note: the profile link row */
-  --brand-hi:#63bd90;
+  /* colour — light. The ground is warm paper, never pure white; the ink is
+     near-black with a green undertone rather than a flat grey. The deep green
+     is the one saturated note, kept for links and the profile components. */
+  --paper:#faf9f6;
+  --ink:#16201a;
+  --body:#46544c;
+  --body-strong:#2b3730;   /* body copy that needs more presence */
+  --muted:#737d76;
+  --line:#e3e1da;          /* hairline */
+  --line-faint:#efede7;
+  --deep:#101a14;          /* hero base, behind the photograph */
+  --accent:#2f6b49;        /* links — deep green */
+  --brand:#2f7d55;         /* profile link row and CV pill */
+  --brand-hi:#245f41;
 
   /* type scale */
   --t-display:clamp(2.9rem,6.8vw,5rem);
@@ -57,7 +58,10 @@
 
   --maxw:820px;
   --maxw-wide:1360px;
-  --measure:68ch;
+  /* one column edge for everything. A ch-based measure drifts with font-size,
+     which left the lead, the body copy and the figure on three different
+     right edges; 100% locks them all to the same column. */
+  --measure:100%;
 
   --ease:cubic-bezier(.22,.61,.36,1);
 }
@@ -66,8 +70,7 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* tells the browser to render scrollbars and form controls dark too */
-html{color-scheme:dark;-webkit-text-size-adjust:100%}
+html{color-scheme:light;-webkit-text-size-adjust:100%}
 
 body{
   font-family:var(--font);
@@ -202,17 +205,15 @@ a:hover{border-bottom-color:var(--accent)}
   position:absolute;inset:0;
   background:url('../Figures/Background.jpg') center 42%/cover no-repeat;
 }
-/* One gradient doing two jobs: it beds the type, and it lands on the exact
-   page colour so the photograph dissolves into the page with no seam.
-   The stops are rgb(18,22,20) — keep them in step with --paper. */
+/* A scrim weighted low, so the top two-thirds stay a photograph and the name
+   at the bottom has something to sit on. The photograph now ends on a clean
+   edge against the paper below it, the way a cover image meets the page. */
 .hero::after{
   content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,
-    rgba(18,22,20,.24) 0%,
-    rgba(18,22,20,0)   28%,
-    rgba(18,22,20,.55) 60%,
-    rgba(18,22,20,.94) 88%,
-    rgb(18,22,20)      100%);
+    rgba(10,15,12,.18) 0%,
+    rgba(10,15,12,0)   32%,
+    rgba(10,15,12,.60) 100%);
 }
 .hero-inner{
   position:relative;z-index:2;width:100%;
@@ -254,14 +255,14 @@ a:hover{border-bottom-color:var(--accent)}
 main{flex:1}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:var(--s6) var(--s3) var(--s5)}
 
-.section{margin-bottom:var(--s6)}
+.section{margin-bottom:calc(var(--s6) / 2)}   /* 48px between sections */
 .section:last-child{margin-bottom:0}
 .section > p{max-width:var(--measure)}
 
 /* heading sits on a hairline, the number set quietly beside it */
 .section-head{
   display:flex;align-items:baseline;gap:var(--s3);
-  padding-bottom:var(--s2);margin-bottom:var(--s4);
+  padding-bottom:var(--s2);margin-bottom:var(--s3);
   border-bottom:1px solid var(--line);
 }
 .section-num{
@@ -292,12 +293,12 @@ main{flex:1}
 .intro-side{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
 .intro-photo{
   width:280px;height:280px;border-radius:50%;object-fit:cover;display:block;
-  filter:saturate(.9) brightness(.96);   /* keep it from glaring on dark */
+  filter:saturate(.95);
 }
 /* The introduction carries the page, so it is set heavier and brighter than
    ordinary body copy — at 400 on a dark ground it reads thin. */
 .intro-text{min-width:0}
-.intro-text p{font-weight:500;color:var(--body-strong)}
+.intro-text p{font-weight:500;color:var(--body-strong);text-align:left}
 
 @media(max-width:820px){
   .intro{flex-direction:column;gap:var(--s4)}
@@ -330,12 +331,28 @@ main{flex:1}
 }
 .social-cv:hover{background:var(--brand-hi);color:var(--paper);transform:translateY(-2px)}
 
-/* — columns (was cards): a hairline above, then type. no box. — */
+/* — figures — */
+.figure{margin:var(--s5) 0 0;max-width:var(--measure)}   /* same column as the prose */
+/* the figure plate is pure white; a hairline keeps it from floating loose
+   against the warmer paper of the page */
+.figure img{
+  display:block;width:100%;height:auto;
+  border:1px solid var(--line);border-radius:4px;
+}
+.figure figcaption{
+  margin-top:var(--s2);
+  max-width:var(--measure);
+  color:var(--muted);font-size:var(--t-small);line-height:1.7;
+  text-align:left;
+}
+
+/* — columns: type only. The rule under the section heading is the only one;
+   a second hairline directly beneath it read as a doubled line. — */
 .cards{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:var(--s4) var(--s4);
 }
-.card{border-top:1px solid var(--line);padding-top:var(--s2)}
+.card{padding-top:0}
 .card h3{margin-bottom:var(--s1);color:var(--ink)}
 /* left-aligned, not justified: the columns are too narrow for justification
    to close without opening gaps between words */
@@ -353,7 +370,7 @@ main{flex:1}
   padding:var(--s3) 0;
   border-top:1px solid var(--line-faint);
 }
-.timeline li:first-child{border-top:1px solid var(--line)}
+.timeline li:first-child{border-top:none;padding-top:0}
 .timeline li:last-child{border-bottom:1px solid var(--line-faint)}
 .tl-date{
   color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
@@ -375,7 +392,7 @@ main{flex:1}
   padding:var(--s3) 0;
   border-top:1px solid var(--line-faint);
 }
-.pubs li:first-child{border-top:1px solid var(--line)}
+.pubs li:first-child{border-top:none;padding-top:0}
 .pubs li:last-child{border-bottom:1px solid var(--line-faint)}
 .pub-year{
   color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;
@@ -398,7 +415,7 @@ main{flex:1}
   padding:var(--s3) 0;
   border-top:1px solid var(--line-faint);
 }
-.list li:first-child{border-top:1px solid var(--line)}
+.list li:first-child{border-top:none;padding-top:0}
 .list li:last-child{border-bottom:1px solid var(--line-faint)}
 .list .meta{
   color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
