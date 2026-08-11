@@ -233,14 +233,22 @@ a:hover{border-bottom-color:var(--accent)}
   letter-spacing:-.05em;
 }
 .hero-tag{
-  margin-top:var(--s3);
+  margin-top:var(--s2);
   color:rgba(255,255,255,.84);
-  font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;
-  max-width:52ch;line-height:1.9;
+  font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;
+  line-height:1.9;
+  /* One line under the name: the 52ch measure the tag used to carry was for
+     a sentence, and it broke this strapline in two. It only wraps now if the
+     viewport genuinely cannot hold it. */
+  max-width:none;white-space:nowrap;
 }
 
 @media(max-width:1100px){.hero-inner{padding-left:var(--s3);padding-right:var(--s3)}}
-@media(max-width:600px){.hero{height:min(39vh,280px)}}
+@media(max-width:600px){
+  .hero{height:min(39vh,280px)}
+  .hero-tag{white-space:normal;letter-spacing:.1em}
+}
 
 /* -------------------------------------------------- 5. inner-page header */
 /* Typographic only. The photograph is spent on the home page. */
@@ -286,6 +294,52 @@ main{flex:1}
    the site — 1.8 leading opens the paragraphs up too much at this length. */
 .page-research .wrap p{line-height:1.6}
 
+/* Home: the hero photograph already dissolves into the page, so the full
+   96px well above the first section read as a hole between the name and the
+   introduction. Half that closes it without crowding. */
+.page-home main .wrap{padding-top:calc(var(--s6) / 2)}
+/* Home reads as one continuous page rather than five separate essays, so
+   the well between sections is half the site default. */
+.page-home main .section{margin-bottom:calc(var(--s6) / 4)}
+/* News entries are scanned like the citations below them, so they are set
+   at the same 80% of the small size. Scoped to the home page: the same
+   .list carries honors, talks and teaching at full size. */
+.page-home .list .body{font-size:calc(var(--t-small) * .8)}
+/* Education entries follow the same 80% setting, degree title included, so
+   each row scales as one block. Scoped for the same reason as above. */
+.page-home .tl-body h3{font-size:calc(var(--t-h3) * .8)}
+.page-home .tl-org,
+.page-home .tl-body p{font-size:calc(var(--t-small) * .8)}
+/* The institution line and the detail beneath it are one block, not two
+   paragraphs — they run on with no gap. */
+/* The date column was cut for a two-line range; on one line it needs the
+   width back. */
+.page-home .timeline li{grid-template-columns:190px 1fr}
+.page-home .tl-org{margin-bottom:0}
+.page-home .tl-org + p{margin-top:0}
+/* The date column reads as the spine of these three sections, so on the
+   home page it is set in white rather than the muted grey. */
+.page-home .tl-date,
+.page-home .list .meta,
+.page-home .pub-year{color:var(--ink)}
+
+/* The site/date line and the figure below it belong to the heading they sit
+   under, so on Research they are pulled up tight against it rather than
+   floating in the middle of the section. */
+.page-research .section-head{margin-bottom:var(--s1)}
+/* Each project is boxed so the six run as distinct cards rather than one
+   long scroll. The rule under the heading would double up with the box
+   edge, so it goes. */
+.page-research main .section{
+  border:2px solid var(--pill,var(--ink));
+  border-radius:10px;
+  padding:var(--s4);
+}
+.page-research .section-head{border-bottom:none;padding-bottom:0}
+@media(max-width:620px){.page-research main .section{padding:var(--s3)}}
+.page-research .tl-org{margin-bottom:var(--s1)}
+.page-research .tl-org + .figure{margin-top:var(--s1)}
+
 /* emoji set beside a section heading — hidden from screen readers in the
    markup, so it is decoration only */
 .h2-emoji{
@@ -315,7 +369,7 @@ main{flex:1}
 .intro{display:flex;gap:var(--s4);align-items:flex-start}
 .intro-side{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
 .intro-photo{
-  width:336px;height:336px;border-radius:50%;object-fit:cover;display:block;
+  width:302px;height:302px;border-radius:50%;object-fit:cover;display:block;
   filter:saturate(.9) brightness(.96);   /* keep it from glaring on dark */
 }
 /* The portrait hangs into the left margin rather than eating the text width.
@@ -326,7 +380,7 @@ main{flex:1}
    ordinary body copy — at 400 on a dark ground it reads thin. */
 .intro-text{min-width:0}
 .intro-text p{
-  font-size:1.35rem;line-height:1.72;       /* the introduction leads the page */
+  font-size:1.35rem;line-height:1.5;        /* the introduction leads the page */
   font-weight:500;color:var(--body-strong);text-align:left;
 }
 /* the opening line and the sign-off carry the weight; the middle explains */
@@ -389,9 +443,17 @@ main{flex:1}
 }
 .card{padding-top:0}
 .card h3{margin-bottom:var(--s1);color:var(--ink)}
-/* left-aligned, not justified: the columns are too narrow for justification
-   to close without opening gaps between words */
-.card p{font-size:var(--t-small);line-height:1.7;margin:0;text-align:left}
+/* Left-aligned, not justified: the columns are too narrow for justification
+   to close without opening gaps between words. Automatic hyphenation is off
+   for the same reason — at ~27 characters a line it broke a word on nearly
+   every line, which is what actually made these columns hard to read. A
+   ragged right edge costs less than a hyphen in every line. Body copy is set
+   one step brighter than the default for contrast at this measure. */
+.card p{
+  font-size:var(--t-small);line-height:1.75;margin:0;
+  text-align:left;color:var(--body-strong);
+  -webkit-hyphens:manual;hyphens:manual;
+}
 
 /* Always three across — left, middle, right — rather than letting auto-fit
    decide. Collapses to a single column only when there is genuinely no room. */
@@ -402,7 +464,7 @@ main{flex:1}
 .timeline{list-style:none}
 .timeline li{
   display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
-  padding:var(--s3) 0;
+  padding:var(--s2) 0;
   border-top:1px solid var(--line-faint);
 }
 .timeline li:first-child{border-top:none;padding-top:0}
@@ -410,10 +472,23 @@ main{flex:1}
 .tl-date{
   color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
   font-variant-numeric:tabular-nums;padding-top:6px;
+  text-align:center;               /* the mark sits on the date's centre line */
+  white-space:nowrap;              /* a range broken over two lines reads as two dates */
 }
+/* Institution mark above the date, set straight on the page — no plate. The
+   Michigan block M is maize and the Seoul mark has had its white ground
+   knocked out, so both sit on the dark ground as drawn. */
+.tl-logo{
+  display:block;
+  height:53px;width:auto;
+  margin:0 auto 10px;
+}
+/* The Seoul mark is a tall crest where the Michigan M is a wide letterform;
+   matching their heights makes the crest read far smaller than it is. */
+.tl-logo[src$="logo-uos.png"]{height:106px}
 .tl-body h3{margin-bottom:2px}
 .tl-org{color:var(--body);font-size:var(--t-small);margin-bottom:var(--s1)}
-.tl-body p{font-size:var(--t-small);line-height:1.72;max-width:var(--measure)}
+.tl-body p{font-size:var(--t-small);line-height:1.55;max-width:var(--measure)}
 
 @media(max-width:620px){
   .timeline li{grid-template-columns:1fr;gap:var(--s1)}
@@ -424,7 +499,7 @@ main{flex:1}
 .pubs{list-style:none}
 .pubs li{
   display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
-  padding:var(--s3) 0;
+  padding:10px 0;
   border-top:1px solid var(--line-faint);
 }
 .pubs li:first-child{border-top:none;padding-top:0}
@@ -433,13 +508,22 @@ main{flex:1}
   color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;
   font-variant-numeric:tabular-nums;padding-top:6px;
 }
+/* Citations run long and are scanned, not read line by line, so they are set
+   at 80% of the surrounding small size. */
 .pub-cite{
-  color:var(--ink);font-size:var(--t-small);line-height:1.72;
+  color:var(--ink);font-size:calc(var(--t-small) * .8);line-height:1.55;
   margin-bottom:var(--s1);max-width:var(--measure);
 }
 .pub-cite em{font-style:italic;color:var(--body)}
-.pub-cite strong{font-weight:600}
+.pub-cite strong{font-weight:700}   /* the only bold in a citation: my own name */
 .pub-links{font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+/* Status ("In review", "In preparation") rides at the end of the citation
+   rather than on a line of its own — it is a property of the paper, not a
+   separate note. Kept on one line so it never breaks across the wrap. */
+.pub-status{
+  font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;
+}
 
 @media(max-width:620px){.pubs li{grid-template-columns:1fr;gap:var(--s1)}}
 
@@ -447,7 +531,7 @@ main{flex:1}
 .list{list-style:none}
 .list li{
   display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
-  padding:var(--s3) 0;
+  padding:10px 0;
   border-top:1px solid var(--line-faint);
 }
 .list li:first-child{border-top:none;padding-top:0}
@@ -456,9 +540,9 @@ main{flex:1}
   color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
   font-variant-numeric:tabular-nums;padding-top:6px;
 }
-.list .body{font-size:var(--t-small);line-height:1.72;max-width:var(--measure)}
+.list .body{font-size:var(--t-small);line-height:1.55;max-width:var(--measure)}
 .list .body span{display:block;color:var(--muted)}
-.list .body span:first-child{color:var(--ink)}
+.list .body span:first-child{color:var(--ink);font-weight:600}
 
 @media(max-width:620px){.list li{grid-template-columns:1fr;gap:2px}}
 
@@ -481,6 +565,62 @@ main{flex:1}
 }
 .btn:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .btn.ghost{background:none}
+
+/* — section filter (publications, research) — */
+/* Pills, borrowing the CV button's language: a hairline capsule at rest, and
+   the one saturated green when it is the active group. It is the only place
+   on the site with a filled control, which is the point — the filter has to
+   read as something you can press. */
+.filterbar{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-bottom:var(--s4);
+}
+.filterbar-btn{
+  display:inline-flex;align-items:center;
+  height:34px;padding:0 18px;border-radius:999px;
+  background:none;border:1px solid var(--line);cursor:pointer;
+  font-family:inherit;
+  font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--body);
+  --pill:var(--brand);
+  transition:background-color .3s var(--ease),border-color .3s var(--ease),
+             color .3s var(--ease);
+}
+/* Each pill carries its own colour in --pill; the rules below only ever
+   reference the variable, so a new group needs one line, not four. */
+.filterbar-btn:hover{
+  color:var(--ink);
+  border-color:var(--pill);
+  background:color-mix(in srgb,var(--pill) 12%,transparent);
+}
+.filterbar-btn.is-on{
+  background:var(--pill);border-color:var(--pill);
+  color:var(--paper);font-weight:700;
+}
+.filterbar-btn.is-on:hover{
+  background:color-mix(in srgb,var(--pill) 88%,#fff);
+  border-color:color-mix(in srgb,var(--pill) 88%,#fff);
+}
+
+/* Research: the colour names the place. Ice blue for the Polar Urals, forest
+   green for the Amazon, water teal for the parcel-tracking tool, a dry warm
+   tone for extreme evapotranspiration, violet for the coupled model. All of
+   them are held to the same lightness so no single group shouts.
+
+   Each pair sets --pill on both the button and the project box, so the pill
+   you press and the card it reveals are the same colour. */
+.page-research [data-filter="arctic"],
+.page-research [data-group="arctic"]{--pill:#7fb6e0}
+.page-research [data-filter="amazon"],
+.page-research [data-group="amazon"]{--pill:#63bd90}
+.page-research [data-filter="ecolpt"],
+.page-research [data-group="ecolpt"]{--pill:#6cc4c0}
+.page-research [data-filter="exet"],
+.page-research [data-group="exet"]{--pill:#dda765}
+.page-research [data-filter="iem"],
+.page-research [data-group="iem"]{--pill:#a99ae0}
+/* "All" stays neutral — it is the absence of a filter, not a sixth group. */
+.filterbar-btn[data-filter="all"]{--pill:var(--body-strong)}
 
 /* ------------------------------------------------------------- 8. footer */
 

@@ -38,14 +38,24 @@
     <div class="wrap">
 
 
-      <section class="section reveal">
+      <!-- Filter. Every project is visible until the script takes over. -->
+      <nav class="filterbar" aria-label="Filter research by project">
+        <button type="button" class="filterbar-btn is-on" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filterbar-btn" data-filter="arctic" aria-pressed="false">Arctic</button>
+        <button type="button" class="filterbar-btn" data-filter="amazon" aria-pressed="false">Amazon</button>
+        <button type="button" class="filterbar-btn" data-filter="ecolpt" aria-pressed="false">EcoLPT</button>
+        <button type="button" class="filterbar-btn" data-filter="exet" aria-pressed="false">ExET</button>
+        <button type="button" class="filterbar-btn" data-filter="iem" aria-pressed="false">IEM</button>
+      </nav>
+
+      <section class="section reveal" data-group="arctic">
         <header class="section-head">
-          <span class="section-num">01</span>
           <h2>Arctic: Arctic Greening and Energy Partitioning</h2>
         </header>
-        <p class="tl-org" style="margin-bottom:24px">Forest&ndash;tundra ecotone, Ural Mountains &middot; Sep. 2022 &ndash; present</p>
+        <p class="tl-org">Forest&ndash;tundra ecotone, Ural Mountains &middot; Sep. 2022 &ndash; present</p>
         <figure class="figure">
           <img src="Figures/arctic-graphical-abstract.jpg" width="1600" height="1462" loading="lazy"
+               style="width:80%;margin-inline:auto"
                alt="Graphical abstract: the tundra&ndash;trees&ndash;forest gradient in the Polar Urals,
                     the share of invalid net radiation values caused by rain and snow on the
                     radiometer, and the resulting monthly and annual net radiation patterns.">
@@ -66,12 +76,11 @@
           Meteorology</em> (2025), 374, 110814; presented at AGU 2023.</p>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="amazon">
         <header class="section-head">
-          <span class="section-num">02</span>
           <h2>Amazon: Sapflow Functional Types</h2>
         </header>
-        <p class="tl-org" style="margin-bottom:24px">Santar&eacute;m, K67, Brazil &middot; Aug. 2023, May &amp; Aug. 2024, Aug. 2025</p>
+        <p class="tl-org">Santar&eacute;m, K67, Brazil &middot; Aug. 2023, May &amp; Aug. 2024, Aug. 2025</p>
         <figure class="figure">
           <img src="Figures/sapflow-functional-types.jpg" width="1600" height="951" loading="lazy"
                alt="The KM67 site near Santar&eacute;m, the sapflow plot network, thermal-dissipation
@@ -91,12 +100,11 @@
           (equal contribution); presented at AGU 2024.</p>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="amazon">
         <header class="section-head">
-          <span class="section-num">03</span>
           <h2>Amazon: Sapflow ML/AI with Causal Interpretation</h2>
         </header>
-        <p class="tl-org" style="margin-bottom:24px">Santar&eacute;m, K67, Brazil</p>
+        <p class="tl-org">Santar&eacute;m, K67, Brazil</p>
         <!-- Representative figure. Put the image in Figures/, then delete these
              two comment lines. Set width/height to the real pixel size so the
              page does not jump while it loads.
@@ -115,12 +123,11 @@
         <p class="muted" style="margin-top:24px">Presented at AGU 2025.</p>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="ecolpt">
         <header class="section-head">
-          <span class="section-num">04</span>
           <h2>EcoLPT: Lagrangian Parcel Tracking Tool for Ecohydrology</h2>
         </header>
-        <p class="tl-org" style="margin-bottom:24px">Oak Ridge National Laboratory, Water Systems Modeling Group &middot; Aug. 2023, Jun.&ndash;Jul. 2024, Jan. 2026 &ndash; present</p>
+        <p class="tl-org">Oak Ridge National Laboratory, Water Systems Modeling Group &middot; Aug. 2023, Jun.&ndash;Jul. 2024, Jan. 2026 &ndash; present</p>
         <!-- Representative figure. Put the image in Figures/, then delete these
              two comment lines. Set width/height to the real pixel size so the
              page does not jump while it loads.
@@ -144,21 +151,20 @@
         <p style="margin-top:32px"><a class="btn" href="software.html">EcoLPT &mdash; software details</a></p>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="exet">
         <header class="section-head">
-          <span class="section-num">05</span>
           <h2>ExET: Extreme Evapotranspiration</h2>
         </header>
-        <p class="tl-org" style="margin-bottom:24px">Global flux-tower network</p>
-        <!-- Representative figure. Put the image in Figures/, then delete these
-             two comment lines. Set width/height to the real pixel size so the
-             page does not jump while it loads.
+        <p class="tl-org">Global flux-tower network</p>
         <figure class="figure">
-          <img src="Figures/exet.jpg" width="1600" height="900" loading="lazy"
-               alt="">
-          <figcaption>Frequency, duration, intensity and severity of extreme evapotranspiration.</figcaption>
+          <img src="Figures/exet.jpg" width="1600" height="874" loading="lazy"
+               alt="Extreme evapotranspiration events identified at a flux tower, the percentile
+                    threshold used to define them, their intensity by land-cover class, and the
+                    ecosystem response before and after an event.">
+          <figcaption>Identifying extreme evapotranspiration events and their aftermath: event
+            detection at a flux site, the percentile threshold that defines them, intensity across
+            land-cover classes, and the ecosystem response in the days following an event.</figcaption>
         </figure>
-        -->
         <p>I introduced extreme evapotranspiration as an ecohydrological shock and built an
           event-based framework to quantify its frequency, duration, intensity and severity. Across a
           global flux-tower dataset, ExET occurs on roughly 5% of days yet accounts for some 10&ndash;15%
@@ -172,12 +178,11 @@
           rapid ecosystem water loss and developing flash drought.</p>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="iem">
         <header class="section-head">
-          <span class="section-num">06</span>
           <h2>Integrated Ecohydrological Model</h2>
         </header>
-        <p class="tl-org" style="margin-bottom:24px">Amazon rainforest &middot; ATS, tRIBS+VEGGIE</p>
+        <p class="tl-org">Amazon rainforest &middot; ATS, tRIBS+VEGGIE</p>
         <!-- Representative figure. Put the image in Figures/, then delete these
              two comment lines. Set width/height to the real pixel size so the
              page does not jump while it loads.

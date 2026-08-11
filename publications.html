@@ -30,7 +30,6 @@
 
   <header class="pagehead">
     <div class="pagehead-inner">
-      <p class="label">Peer-reviewed Articles, Datasets &amp; Patents</p>
       <h1>Publications</h1>
     </div>
   </header>
@@ -38,13 +37,18 @@
   <main>
     <div class="wrap">
 
-      <section class="section reveal">
-        <p class="lead">Twenty-two peer-reviewed articles, four manuscripts in review, one in
-          preparation, and one granted patent. Full list also on
-          <a href="https://scholar.google.com/citations?user=_zczJPkAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
-      </section>
+      <!-- Filter. Every group is visible until the script takes over, so with
+           JavaScript off the page reads as one straight list. -->
+      <nav class="filterbar" aria-label="Filter publications by type">
+        <button type="button" class="filterbar-btn is-on" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filterbar-btn" data-filter="preparation" aria-pressed="false">In Preparation</button>
+        <button type="button" class="filterbar-btn" data-filter="review" aria-pressed="false">In Review</button>
+        <button type="button" class="filterbar-btn" data-filter="articles" aria-pressed="false">Journal Articles</button>
+        <button type="button" class="filterbar-btn" data-filter="patents" aria-pressed="false">Patents</button>
+        <button type="button" class="filterbar-btn" data-filter="datasets" aria-pressed="false">Datasets</button>
+      </nav>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="preparation">
         <header class="section-head">
           <span class="section-num">01</span>
           <h2>In Preparation</h2>
@@ -56,10 +60,16 @@
               <p class="pub-cite"><strong>Kim, T.</strong>, Le, P., Coon, E., Painter, S., Maxwell, R., Tran, V., Taylor, T., &amp; Ivanov, V. EcoLPT v1.0: Lagrangian Particle Tracking tool for Ecohydrology. <em>Geoscientific Model Development</em>.</p>
             </div>
           </li>
+          <li>
+            <div class="pub-year">2026</div>
+            <div>
+              <p class="pub-cite"><strong>Kim, T.</strong>, Taylor, T., Agee, E., Restrepo-Coupe, N., Campos, K., Prohaska, N., Albert, L., Figueira, M., Moura, J., Ferreira, S., Senna, R., Oliveira Jr., R., Ferreira, M., Rodrigues, J., Souza, T., &amp; Ivanov, V. Dynamic interpretation of tree-level sapflow response to environmental changes in the Amazon Rainforest. <em>Proceedings of the National Academy of Sciences</em>.</p>
+            </div>
+          </li>
         </ol>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="review">
         <header class="section-head">
           <span class="section-num">02</span>
           <h2>In Review</h2>
@@ -94,7 +104,7 @@
         </ol>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="articles">
         <header class="section-head">
           <span class="section-num">03</span>
           <h2>Journal Articles</h2>
@@ -237,7 +247,7 @@
         </ol>
       </section>
 
-      <section class="section reveal">
+      <section class="section reveal" data-group="patents">
         <header class="section-head">
           <span class="section-num">04</span>
           <h2>Patents</h2>
@@ -247,6 +257,36 @@
             <div class="pub-year">2025</div>
             <div>
               <p class="pub-cite">Lee, J., Lee, M., Lee, M., Lee, J., Kim, H., Cha, Y., &amp; <strong>Kim, T.</strong> Extraction of major water quality management variables for rivers using factor analysis and the development of a customized water quality index reflecting regional differences. Korea Patent 10-2841247.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section reveal" data-group="datasets">
+        <header class="section-head">
+          <span class="section-num">05</span>
+          <h2>Datasets</h2>
+        </header>
+        <ol class="pubs">
+          <li>
+            <div class="pub-year">2025</div>
+            <div>
+              <p class="pub-cite"><strong>Kim, T.</strong>, Tran, V. N., &amp; Ivanov, V. CAMELSH/ERA5-Land (1, 2, 3): A Large-Sample Hourly Hydrometeorological Dataset and Attributes at Watershed-Scale for Contiguous United States [Dataset]. <em>Zenodo</em>.</p>
+              <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.15738860" target="_blank" rel="noopener">10.5281/zenodo.15738860</a> &middot; <a href="https://doi.org/10.5281/zenodo.15738914" target="_blank" rel="noopener">…914</a> &middot; <a href="https://doi.org/10.5281/zenodo.15738931" target="_blank" rel="noopener">…931</a></p>
+            </div>
+          </li>
+          <li>
+            <div class="pub-year">2025</div>
+            <div>
+              <p class="pub-cite"><strong>Kim, T.</strong>, &amp; Ivanov, V. Precipitation-Corrected Surface Radiation Components in the Arctic Polar Urals from CNR4 Radiometer Measurements [Dataset]. <em>Zenodo</em>.</p>
+              <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.15083964" target="_blank" rel="noopener">10.5281/zenodo.15083964</a></p>
+            </div>
+          </li>
+          <li>
+            <div class="pub-year">2026</div>
+            <div>
+              <p class="pub-cite">Yang, S., Lee, H., <strong>Kim, T.</strong>, &amp; Cha, Y. GLCD250-MOD: Global Lakes Chlorophyll-a Daily 250 m based on MODIS [Dataset]. <em>Zenodo</em>.</p>
+              <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.18950636" target="_blank" rel="noopener">10.5281/zenodo.18950636</a></p>
             </div>
           </li>
         </ol>
