@@ -541,8 +541,10 @@ main{flex:1}
   font-variant-numeric:tabular-nums;padding-top:6px;
 }
 .list .body{font-size:var(--t-small);line-height:1.55;max-width:var(--measure)}
-.list .body span{display:block;color:var(--muted)}
-.list .body span:first-child{color:var(--ink);font-weight:600}
+.list .body > span{display:block;color:var(--muted)}
+.list .body > span:first-child{color:var(--ink);font-weight:600}
+/* the host institution, set in the same white as the title above it */
+.talk-org{color:var(--ink)}
 
 @media(max-width:620px){.list li{grid-template-columns:1fr;gap:2px}}
 
