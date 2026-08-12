@@ -293,6 +293,28 @@ main{flex:1}
 /* Research runs long stretches of prose, so it is set tighter than the rest of
    the site — 1.8 leading opens the paragraphs up too much at this length. */
 .page-research .wrap p{line-height:1.6}
+/* The paper's own abstract, set in white so it reads as the primary text
+   of the project rather than a note about it. */
+.abstract{color:var(--ink);font-size:calc(var(--t-body) * .9)}
+.abstract + .abstract{margin-top:var(--s2)}
+/* The bulleted half of a structured abstract. The marker is drawn rather
+   than left to list-style so it can sit in the same muted grey as the
+   rest of the page furniture. */
+.abstract-list{
+  list-style:none;
+  color:var(--ink);line-height:1.6;
+  font-size:calc(var(--t-body) * .9);
+}
+.abstract-list li{position:relative;padding-left:1.35em;text-align:justify}
+.abstract-list li::before{
+  content:"\25CF";position:absolute;left:0;top:0;
+  color:var(--muted);font-size:.62em;line-height:2.6;
+}
+.abstract-list li + li{margin-top:var(--s2)}
+
+/* Vision is a short manifesto rather than reference copy — it is set in the
+   full white so it carries the same weight as the headings above it. */
+.page-vision main .wrap p{color:var(--ink)}
 
 /* Home: the hero photograph already dissolves into the page, so the full
    96px well above the first section read as a hole between the name and the
@@ -304,24 +326,23 @@ main{flex:1}
 /* News entries are scanned like the citations below them, so they are set
    at the same 80% of the small size. Scoped to the home page: the same
    .list carries honors, talks and teaching at full size. */
-.page-home .list .body{font-size:calc(var(--t-small) * .8)}
+/* Publications through Honors all run the same kind of list, so the sizes and
+   the date colour live on the components themselves rather than being switched
+   on page by page. */
 /* Education entries follow the same 80% setting, degree title included, so
    each row scales as one block. Scoped for the same reason as above. */
-.page-home .tl-body h3{font-size:calc(var(--t-h3) * .8)}
-.page-home .tl-org,
-.page-home .tl-body p{font-size:calc(var(--t-small) * .8)}
+
 /* The institution line and the detail beneath it are one block, not two
    paragraphs — they run on with no gap. */
 /* The date column was cut for a two-line range; on one line it needs the
    width back. */
 .page-home .timeline li{grid-template-columns:190px 1fr}
+.page-home .tl-date{text-align:center;white-space:nowrap}
 .page-home .tl-org{margin-bottom:0}
 .page-home .tl-org + p{margin-top:0}
 /* The date column reads as the spine of these three sections, so on the
    home page it is set in white rather than the muted grey. */
-.page-home .tl-date,
-.page-home .list .meta,
-.page-home .pub-year{color:var(--ink)}
+
 
 /* The site/date line and the figure below it belong to the heading they sit
    under, so on Research they are pulled up tight against it rather than
@@ -339,6 +360,13 @@ main{flex:1}
 @media(max-width:620px){.page-research main .section{padding:var(--s3)}}
 .page-research .tl-org{margin-bottom:var(--s1)}
 .page-research .tl-org + .figure{margin-top:var(--s1)}
+/* A figure straight under the heading needs a touch more air than one that
+   follows the site/date line — nothing between it and the rule otherwise. */
+.page-research .section-head + .figure{margin-top:var(--s3)}
+/* The figure carries no bottom margin of its own, so the text under it would
+   otherwise start flush against the image. */
+.page-research .figure + p,
+.page-research .figure + .abstract-list{margin-top:var(--s3)}
 
 /* emoji set beside a section heading — hidden from screen readers in the
    markup, so it is decoration only */
@@ -352,6 +380,10 @@ main{flex:1}
   font-weight:400;letter-spacing:-.014em;
   max-width:var(--measure);
 }
+.lead strong{font-weight:700}
+/* A figure that illustrates the lead belongs to it; the full 64px well is for
+   a figure that follows a stretch of prose. */
+.lead + .figure{margin-top:var(--s3)}
 
 /* secondary copy: status lines, captions, anything that should recede */
 .muted{color:var(--muted)}
@@ -372,10 +404,10 @@ main{flex:1}
   width:302px;height:302px;border-radius:50%;object-fit:cover;display:block;
   filter:saturate(.9) brightness(.96);   /* keep it from glaring on dark */
 }
-/* The portrait hangs into the left margin rather than eating the text width.
-   The deeper the negative margin, the further left the photograph sits and the
-   more room the text column gets. */
-.intro-side{margin-left:-96px}
+/* The portrait used to hang 96px into the left margin, which left the intro
+   starting further left than every section under it. It now begins on the same
+   line as the prose below, so the whole column has one left edge. */
+.intro-side{margin-left:0}
 /* The introduction carries the page, so it is set heavier and brighter than
    ordinary body copy — at 400 on a dark ground it reads thin. */
 .intro-text{min-width:0}
@@ -464,16 +496,14 @@ main{flex:1}
 .timeline{list-style:none}
 .timeline li{
   display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
-  padding:var(--s2) 0;
+  padding:10px 0;
   border-top:1px solid var(--line-faint);
 }
 .timeline li:first-child{border-top:none;padding-top:0}
 .timeline li:last-child{border-bottom:1px solid var(--line-faint)}
 .tl-date{
-  color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
   font-variant-numeric:tabular-nums;padding-top:6px;
-  text-align:center;               /* the mark sits on the date's centre line */
-  white-space:nowrap;              /* a range broken over two lines reads as two dates */
 }
 /* Institution mark above the date, set straight on the page — no plate. The
    Michigan block M is maize and the Seoul mark has had its white ground
@@ -486,9 +516,9 @@ main{flex:1}
 /* The Seoul mark is a tall crest where the Michigan M is a wide letterform;
    matching their heights makes the crest read far smaller than it is. */
 .tl-logo[src$="logo-uos.png"]{height:106px}
-.tl-body h3{margin-bottom:2px}
-.tl-org{color:var(--body);font-size:var(--t-small);margin-bottom:var(--s1)}
-.tl-body p{font-size:var(--t-small);line-height:1.55;max-width:var(--measure)}
+.tl-body h3{margin-bottom:2px;font-size:calc(var(--t-h3) * .8)}
+.tl-org{color:var(--body);font-size:calc(var(--t-small) * .8);margin-bottom:var(--s1)}
+.tl-body p{font-size:calc(var(--t-small) * .8);line-height:1.55;max-width:var(--measure)}
 
 @media(max-width:620px){
   .timeline li{grid-template-columns:1fr;gap:var(--s1)}
@@ -505,7 +535,7 @@ main{flex:1}
 .pubs li:first-child{border-top:none;padding-top:0}
 .pubs li:last-child{border-bottom:1px solid var(--line-faint)}
 .pub-year{
-  color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;
+  color:var(--ink);font-size:var(--t-label);letter-spacing:.12em;
   font-variant-numeric:tabular-nums;padding-top:6px;
 }
 /* Citations run long and are scanned, not read line by line, so they are set
@@ -529,24 +559,36 @@ main{flex:1}
 
 /* — two-column list — */
 .list{list-style:none}
-.list li{
+.list > li{
   display:grid;grid-template-columns:170px 1fr;gap:var(--s4);
   padding:10px 0;
   border-top:1px solid var(--line-faint);
 }
-.list li:first-child{border-top:none;padding-top:0}
-.list li:last-child{border-bottom:1px solid var(--line-faint)}
+.list > li:first-child{border-top:none;padding-top:0}
+.list > li:last-child{border-bottom:1px solid var(--line-faint)}
 .list .meta{
-  color:var(--muted);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;
   font-variant-numeric:tabular-nums;padding-top:6px;
 }
-.list .body{font-size:var(--t-small);line-height:1.55;max-width:var(--measure)}
+.list .body{font-size:calc(var(--t-small) * .8);line-height:1.55;max-width:var(--measure)}
 .list .body > span{display:block;color:var(--muted)}
 .list .body > span:first-child{color:var(--ink);font-weight:600}
 /* the host institution, set in the same white as the title above it */
 .talk-org{color:var(--ink)}
 
-@media(max-width:620px){.list li{grid-template-columns:1fr;gap:2px}}
+/* Items hanging off a list entry — the individual theses under a mentoring
+   row. Set in the same muted grey as the detail line above them. */
+/* the dagger note under a citation */
+.footnote{font-size:var(--t-label);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+
+.sub-list{list-style:none;margin-top:6px}
+.sub-list li{
+  position:relative;padding-left:1.1em;color:var(--muted);
+  text-align:left;-webkit-hyphens:manual;hyphens:manual;
+}
+.sub-list li::before{content:"\2013";position:absolute;left:0}
+
+@media(max-width:620px){.list > li{grid-template-columns:1fr;gap:2px}}
 
 /* — contact — */
 .contact-grid{
