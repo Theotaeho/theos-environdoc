@@ -93,16 +93,15 @@ h3{font-size:var(--t-h3);font-weight:600;letter-spacing:-.008em}
 p{text-wrap:pretty}
 p + p{margin-top:var(--s2)}
 
-/* Justified setting for running prose. Hyphenation must be on: without it,
-   justifying a narrow measure opens rivers of white space between words.
-   Single-line paragraphs are unaffected — justification never stretches a
-   last line — so this is safe to apply broadly. */
+/* Ragged right, not justified. Justification needs a measure wide enough to
+   absorb the slack; on a phone the column is narrow enough that it opens
+   rivers of white space between words instead. Automatic hyphenation went
+   with it — it existed only to keep those gaps closed. */
 p,
-.list .body,
-.contact-item .value{
-  text-align:justify;
-  -webkit-hyphens:auto;
-  hyphens:auto;
+.list .body{
+  text-align:left;
+  -webkit-hyphens:manual;
+  hyphens:manual;
 }
 
 /* Short set lines that must never be stretched or broken. */
@@ -305,7 +304,7 @@ main{flex:1}
   color:var(--ink);line-height:1.6;
   font-size:calc(var(--t-body) * .9);
 }
-.abstract-list li{position:relative;padding-left:1.35em;text-align:justify}
+.abstract-list li{position:relative;padding-left:1.35em;text-align:left}
 .abstract-list li::before{
   content:"\25CF";position:absolute;left:0;top:0;
   color:var(--muted);font-size:.62em;line-height:2.6;
@@ -323,6 +322,11 @@ main{flex:1}
 /* Home reads as one continuous page rather than five separate essays, so
    the well between sections is half the site default. */
 .page-home main .section{margin-bottom:calc(var(--s6) / 4)}
+
+/* Others sets a couple of paragraphs outside any list — Languages, the
+   activity notes — which would otherwise stay at full body size while every
+   list on the page sits at the small setting. */
+.page-others main .wrap > .section > p{font-size:calc(var(--t-small) * .8)}
 /* News entries are scanned like the citations below them, so they are set
    at the same 80% of the small size. Scoped to the home page: the same
    .list carries honors, talks and teaching at full size. */
@@ -474,7 +478,7 @@ main{flex:1}
   gap:var(--s4) var(--s4);
 }
 .card{padding-top:0}
-.card h3{margin-bottom:var(--s1);color:var(--ink)}
+.card h3{margin-bottom:var(--s1);color:var(--ink);font-size:calc(var(--t-h3) * .8)}
 /* Left-aligned, not justified: the columns are too narrow for justification
    to close without opening gaps between words. Automatic hyphenation is off
    for the same reason — at ~27 characters a line it broke a word on nearly
@@ -482,7 +486,7 @@ main{flex:1}
    ragged right edge costs less than a hyphen in every line. Body copy is set
    one step brighter than the default for contrast at this measure. */
 .card p{
-  font-size:var(--t-small);line-height:1.75;margin:0;
+  font-size:calc(var(--t-small) * .8);line-height:1.75;margin:0;
   text-align:left;color:var(--body-strong);
   -webkit-hyphens:manual;hyphens:manual;
 }
